@@ -5,17 +5,17 @@
 Open Recipe Cookbook
 
 THEME/IDEA:
-The general theme/idea for this project will be a Open Recipe Cookbook, where users can upload their cooking recipe's including photos, ingredients, steps, notes, etc... and view others based on categories or tags associated with the recipes. The users will also be able to like recipes and view by most or least likes, and even comment on other recipes.
+The general theme/idea for this project will be a Open Recipe Cookbook. In this cookbook, users will be able to view other's uploaded recipes based on categories or searched keywords. The website then will display all the recipe's that match, along with the recipes name, a picture demonstrating it, and its rating, The users then can click on individual recipes to view the ingredients, steps, more about it, notes, comments, more images, and its rating. The users will be able to add their own comments or likes as well. The users will also be able to add/upload their own recipes, choosing from their photos, adding their ingredients, name, notes, steps etc so others can view and follow along.
 
 
 TARGET AUDIENCE:
-The ideal target audience is for those who enjoy cooking or finding new recipes to try. But this works for anyone who is intersted in new recipes or showing off their own as well.
+The ideal target audience is for those who enjoy cooking or trying out new recipes. But this website will be able to be used by anyone who just wants to try a new recipe or upload thier own to see what others think about it. Whether this website is used for spreading custom recipes, or used as a last minute need a quick recipe type person, anyone can use it.
 
 DATA:
-This project will manage data that involves recipes. Each recipe will have titles, pictures, ingredients, steps, notes, likes, and even comments. All of this will be stored on AWS and then dynamically generated based on the categories or tags searched for by the users.
+This project will manage data that involves recipes. Each recipe will have titles, pictures, ingredients, steps, notes, likes, comments, etc. All of this will be stored on AWS and then dynamically generated based on the categories or tags searched for by the users and displayed for the users.
 
 STRETCH GOALS:
-After the project is fully completed and functional. A stretch goal is to add a save/load capability. Or even a log in capability for reoccuring users who want to save their favorite recipes.
+After the project is fully completed and functional. A stretch goal is to add a saved recipe list. Or even a log in capability for reoccuring users who want to save their favorite recipes and find them quickly.
 
 ## Project Wireframe
 
