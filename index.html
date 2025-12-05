@@ -1,18 +1,46 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hello World!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Open Recipe Cookbook - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
-  <h1>HTML Rocks!</h1>
-  <img src="img/compile.jpeg">
-  <script type="module" src="js/main.js"></script>
-</body>
+  <header>
+    <h1>Open Recipe Cookbook</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="view.html">View Recipes</a>
+      <a href="add.html">Add Recipe</a>
+    </nav>
+  </header>
 
+  <main>
+    <section aria-labelledby="home-heading" class="home-hero">
+      <h2 id="home-heading">Welcome to the Open Recipe Cookbook</h2>
+      <p>Browse community recipes or add your own dishes to the cookbook.</p>
+
+      <div class="home-buttons">
+        <a class="button primary" href="view.html">View Recipes</a>
+        <a class="button" href="add.html">Add New Recipe</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="featured-heading" class="featured-section">
+      <h2 id="featured-heading">Featured Recipes (Coming Soon)</h2>
+      <p>This section will show some featured recipes once the backend is connected.</p>
+      <div id="featured-recipes" class="recipe-grid">
+        <!-- Later: JS will insert recipe cards here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Recipe Cookbook</p>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/index.js" defer></script>
+</body>
 </html>

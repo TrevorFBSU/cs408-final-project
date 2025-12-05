@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open Recipe Cookbook - View Recipes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Open Recipe Cookbook</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="view.html" aria-current="page">View Recipes</a>
+      <a href="add.html">Add Recipe</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="view-heading">
+      <h2 id="view-heading">Browse Recipes</h2>
+
+      <form class="filter-bar" aria-label="Filter and search recipes">
+        <div class="filter-group">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select" name="sort">
+            <option value="newest">Newest</option>
+            <option value="likes">Most Liked</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="category-select">Category:</label>
+          <select id="category-select" name="category">
+            <option value="all">All</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+            <option value="vegan">Vegan</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="search-input">Search by keyword:</label>
+          <input id="search-input" name="search" type="search" placeholder="e.g. pasta, chicken" />
+        </div>
+
+        <button type="button" id="apply-filters-btn" class="button">Apply</button>
+      </form>
+
+      <section aria-label="Recipe list">
+        <div id="recipe-grid" class="recipe-grid">
+          <!-- JS will inject recipe cards here -->
+          <!-- For now you can leave it empty or add placeholder cards -->
+        </div>
+      </section>
+
+      <div class="page-actions">
+        <a class="button" href="index.html">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Recipe Cookbook</p>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/view.js" defer></script>
+</body>
+</html>

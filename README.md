@@ -30,3 +30,22 @@ INDIVIDUAL RECIPE PAGE:
 <img width="974" height="845" alt="image" src="https://github.com/user-attachments/assets/851330e7-7791-4817-9ead-68c51630f6e9" />
 
 
+
+
+
+## NOTES
+Recipe Structure:
+
+{
+  "recipeId": "uuid-string",
+  "name": "Spaghetti",
+  "category": "dinner",
+  "imageUrl": "https://example.com/spaghetti.jpg",
+  "ingredients": ["1 lb pasta", "2 cups tomato sauce"],
+  "steps": ["Boil water", "Cook pasta", "Add sauce"],
+  "notes": "Family recipe",
+  "likes": 0,
+  "createdAt": "2025-03-01T00:00:00.000Z"
+}
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open Recipe Cookbook - Recipe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Open Recipe Cookbook</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="view.html">View Recipes</a>
+      <a href="add.html">Add Recipe</a>
+    </nav>
+  </header>
+
+  <main>
+    <article aria-labelledby="recipe-title" class="recipe-detail">
+      <h2 id="recipe-title">Recipe Name Here</h2>
+      <p id="recipe-category-label" class="recipe-category">Category: <span id="recipe-category-value">Unknown</span></p>
+
+      <figure class="recipe-image-wrapper">
+        <img id="recipe-image" src="" alt="Recipe image" />
+        <figcaption id="recipe-image-caption">Recipe image</figcaption>
+      </figure>
+
+      <section aria-labelledby="ingredients-heading">
+        <h3 id="ingredients-heading">Ingredients</h3>
+        <ul id="ingredients-list">
+          <!-- JS will insert <li> items -->
+        </ul>
+      </section>
+
+      <section aria-labelledby="steps-heading">
+        <h3 id="steps-heading">Steps</h3>
+        <ol id="steps-list">
+          <!-- JS will insert <li> items -->
+        </ol>
+      </section>
+
+      <section aria-labelledby="notes-heading">
+        <h3 id="notes-heading">Notes</h3>
+        <p id="notes-text">No notes yet.</p>
+      </section>
+
+      <!-- Likes + actions -->
+      <section aria-label="Recipe actions" class="recipe-actions">
+        <button id="like-button" class="button" type="button">
+          Like <span aria-hidden="true">❤️</span>
+        </button>
+        <span id="like-count" aria-label="Like count">0 likes</span>
+
+        <!-- delete/edit are optional; you can enable later -->
+        <button id="delete-button" class="button danger" type="button">
+          Delete Recipe
+        </button>
+      </section>
+
+      <div class="page-actions">
+        <a class="button" href="view.html">Back to Recipes</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Recipe Cookbook</p>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/recipe.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open Recipe Cookbook - Add Recipe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Open Recipe Cookbook</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="view.html">View Recipes</a>
+      <a href="add.html" aria-current="page">Add Recipe</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="add-heading" class="form-section">
+      <h2 id="add-heading">Add a New Recipe</h2>
+      <p>Fill out the form below to add your recipe to the cookbook.</p>
+
+      <form id="add-recipe-form">
+        <div class="form-field">
+          <label for="recipe-name">Recipe name<span aria-hidden="true">*</span></label>
+          <input id="recipe-name" name="name" type="text" required />
+        </div>
+
+        <div class="form-field">
+          <label for="recipe-category">Category<span aria-hidden="true">*</span></label>
+          <select id="recipe-category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+            <option value="vegan">Vegan</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="image-url">Image URL</label>
+          <input id="image-url" name="imageUrl" type="url" placeholder="https://example.com/my-dish.jpg" />
+        </div>
+
+        <div class="form-field">
+          <label for="ingredients">Ingredients<span aria-hidden="true">*</span></label>
+          <textarea id="ingredients" name="ingredients" rows="6" placeholder="One ingredient per line" required></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="steps">Steps<span aria-hidden="true">*</span></label>
+          <textarea id="steps" name="steps" rows="8" placeholder="One step per line" required></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Extra tips, serving suggestions, etc."></textarea>
+        </div>
+
+        <button type="submit" class="button primary">Add Recipe</button>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="page-actions">
+        <a class="button" href="index.html">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Recipe Cookbook</p>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/add.js" defer></script>
+</body>
+</html>
