@@ -33,6 +33,31 @@ INDIVIDUAL RECIPE PAGE:
 
 
 
+## Features
+
+- View all recipes in a responsive grid layout
+- Filter recipes by category, keyword, and sort order
+- View detailed recipe pages with ingredients, steps, and notes
+- Upload new recipes with optional image uploads
+- Like recipes (limited per browser)
+- Delete recipes
+- Placeholder images for recipes without uploaded images
+- Fully accessible UI (100 Lighthouse accessibility score on all pages)
+- Front-end JavaScript tests using QUnit
+
+
+
+## Pages
+
+- **index.html** – Landing page
+- **view.html** – Browse and filter recipes
+- **add.html** – Add a new recipe
+- **recipe.html** – View a single recipe in detail
+- **test/test.html** – QUnit test runner
+
+
+
+
 ## NOTES
 Recipe Structure:
 

@@ -1,8 +1,30 @@
 // frontend/js/recipe.js
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // --- testable helpers (keep simple) ---
+  const PLACEHOLDER_IMG = "img/placeholder.png";
+
+  function getRecipeImageSrc(imageUrl) {
+    const raw = String(imageUrl || "").trim();
+    return raw.length > 0 ? raw : PLACEHOLDER_IMG;
+  }
+
+  function formatLikes(likes) {
+    const n = Number(likes || 0);
+    return `${n} like${n === 1 ? "" : "s"}`;
+  }
+
+  // expose for QUnit (no new files needed)
+  window.getRecipeImageSrc = getRecipeImageSrc;
+  window.formatLikes = formatLikes;
+
+
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
+  const likedKey = `liked_recipe_${id}`;
+
 
   const titleEl = document.getElementById("recipe-title");
   const categoryValueEl = document.getElementById("recipe-category-value");
@@ -30,18 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
       categoryValueEl.textContent = safeCategory;
 
       const likes = recipe.likes || 0;
-      likeCountEl.textContent = `${likes} like${likes === 1 ? "" : "s"}`;
+      likeCountEl.textContent = formatLikes(likes);
+
 
       // Image
-      if (recipe.imageUrl) {
-        imageEl.src = recipe.imageUrl;
-        imageEl.alt = `Image of ${safeName}`;
-        imageCaptionEl.textContent = safeName;
-        imageEl.style.display = "block";
-      } else {
-        imageEl.style.display = "none";
-        imageCaptionEl.textContent = "No image available";
-      }
+      const imgSrc = getRecipeImageSrc(recipe.imageUrl);
+
+      imageEl.src = imgSrc;
+      imageEl.alt = `Image of ${safeName}`;
+      imageCaptionEl.textContent = safeName;
+      imageEl.style.display = "block";
+
 
       // Ingredients
       ingredientsList.innerHTML = "";
@@ -68,4 +89,76 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadRecipe();
+
+
+  const deleteBtn = document.getElementById("delete-button");
+
+  if (deleteBtn && id) {
+    deleteBtn.addEventListener("click", async () => {
+      const confirmDelete = confirm("Are you sure you want to delete this recipe?");
+      if (!confirmDelete) return;
+
+      try {
+        deleteBtn.disabled = true;
+
+        // IMPORTANT: method is the 2nd argument
+        await apiRequest(`/recipes/${encodeURIComponent(id)}`, { method: "DELETE" });
+
+
+        alert("Recipe deleted successfully!");
+        window.location.href = "view.html";
+      } catch (err) {
+        console.error("Delete failed:", err);
+        alert(`Failed to delete recipe: ${err.message || err}`);
+      } finally {
+        deleteBtn.disabled = false;
+      }
+    });
+  }
+
+
+
+  const likeBtn = document.getElementById("like-button");
+
+if (likeBtn && id) {
+  const likedKey = `liked_recipe_${id}`;
+
+  // ✅ If already liked on this browser, lock it
+  if (localStorage.getItem(likedKey) === "true") {
+    likeBtn.disabled = true;
+    likeBtn.textContent = "❤️ Liked";
+  }
+
+  let likeInProgress = false;
+
+  likeBtn.addEventListener("click", async () => {
+    // ✅ hard stop: can’t like again once liked
+    if (localStorage.getItem(likedKey) === "true") return;
+    if (likeInProgress) return;
+
+    try {
+      likeInProgress = true;
+      likeBtn.disabled = true;
+
+      const updated = apiRequest(`/recipes/${encodeURIComponent(id)}/like`, { method: "POST" })
+
+
+      const likes = updated.likes || 0;
+      likeCountEl.textContent = `${likes} like${likes === 1 ? "" : "s"}`;
+
+      // ✅ mark as liked permanently (for this browser)
+      localStorage.setItem(likedKey, "true");
+      likeBtn.textContent = "❤️ Liked";
+    } catch (err) {
+      console.error("Like failed:", err);
+      alert("Failed to like recipe");
+      likeBtn.disabled = false; // re-enable only if it failed
+    } finally {
+      likeInProgress = false;
+    }
+  });
+}
+
+
+
 });

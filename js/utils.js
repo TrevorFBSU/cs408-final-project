@@ -1,34 +1,33 @@
-// frontend/js/utils.js
-
-// 🔁 REPLACE this with your real Invoke URL (without trailing slash)
-const API_BASE = "https://rg7endbzic.execute-api.us-east-2.amazonaws.com/";
+const API_BASE = "https://rg7endbzic.execute-api.us-east-2.amazonaws.com"; // no trailing slash
 
 async function apiRequest(path, options = {}) {
-  const response = await fetch(`${API_BASE}${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {})
-    },
-    ...options
-  });
+  const fetchOptions = {
+    method: options.method || "GET",
+    headers: options.headers || {},
+  };
 
-  // Try to parse JSON, but don't crash if body is empty
-  let data = null;
-  try {
-    data = await response.json();
-  } catch (_) {
-    data = null;
+  // Only set JSON header if we're sending a body
+  if (options.body !== undefined) {
+    fetchOptions.headers["Content-Type"] = "application/json";
+    fetchOptions.body =
+      typeof options.body === "string" ? options.body : JSON.stringify(options.body);
   }
 
-  if (!response.ok) {
-    const message = data && data.message ? data.message : `HTTP ${response.status}`;
-    throw new Error(message);
+  const res = await fetch(`${API_BASE}${path}`, fetchOptions);
+
+  const text = await res.text();
+  let data;
+  try { data = text ? JSON.parse(text) : null; }
+  catch { data = text; }
+
+  if (!res.ok) {
+    const msg = (data && data.message) ? data.message : `HTTP ${res.status}`;
+    throw new Error(msg);
   }
 
   return data;
 }
 
-// Simple sanitizer – we'll reuse this everywhere
 function sanitizeText(str) {
   return String(str || "")
     .replace(/&/g, "&amp;")
@@ -37,6 +36,12 @@ function sanitizeText(str) {
     .trim();
 }
 
-// Make available to other scripts (no modules needed)
 window.apiRequest = apiRequest;
 window.sanitizeText = sanitizeText;
+
+
+// Allow tests to import in Node without breaking the browser
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { apiRequest, sanitizeText };
+}
+

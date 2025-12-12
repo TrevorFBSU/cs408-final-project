@@ -6,7 +6,15 @@
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
+
   <script src="https://code.jquery.com/qunit/qunit-2.21.0.js"></script>
+
+  <!-- load app code first -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/view.js"></script>
+  <script src="../js/recipe.js"></script>
+
+  <!-- then tests -->
   <script type="module" src="test.js"></script>
 </body>
 </html>
