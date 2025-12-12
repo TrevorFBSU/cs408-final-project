@@ -4,6 +4,11 @@
 
 Open Recipe Cookbook
 
+Open Recipe Cookbook is a web application that allows users to browse, search, and contribute recipes.  
+Users can upload their own recipes, view others’ recipes by category or keyword, like recipes, and view detailed cooking instructions.
+
+This project uses **AWS (API Gateway + Lambda + DynamoDB)** for persistent data storage and retrieval.
+
 THEME/IDEA:
 The general theme/idea for this project will be a Open Recipe Cookbook. In this cookbook, users will be able to view other's uploaded recipes based on categories or searched keywords. The website then will display all the recipe's that match, along with the recipes name, a picture demonstrating it, and its rating, The users then can click on individual recipes to view the ingredients, steps, more about it, notes, comments, more images, and its rating. The users will be able to add their own comments or likes as well. The users will also be able to add/upload their own recipes, choosing from their photos, adding their ingredients, name, notes, steps etc so others can view and follow along.
 
@@ -31,6 +36,12 @@ INDIVIDUAL RECIPE PAGE:
 
 
 
+## How To Run
+
+If Using VS Code:
+1) Clone the repository
+2) Make sure dependencies are installed (npm install)
+3) Open index.html with Live Server
 
 
 ## Features
